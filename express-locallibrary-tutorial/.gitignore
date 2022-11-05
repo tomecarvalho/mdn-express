@@ -12,3 +12,6 @@ coverage
 benchmarks/graphs
 
 # ignore additional files using core.excludesFile
+
+# VS Code
+.vscode
