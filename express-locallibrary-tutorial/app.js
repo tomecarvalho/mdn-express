@@ -9,11 +9,19 @@ const usersRouter = require("./routes/users");
 const wikiRouter = require("./routes/wiki");
 const catalogRouter = require("./routes/catalog");
 
+const compression = require("compression");
+const helmet = require("helmet");
+
 const mongoose = require("mongoose");
 
 require("dotenv").config();
 
 const app = express();
+
+// @ts-ignore
+app.use(helmet());
+
+app.use(compression()); // Compress all routes
 
 // Mongoose
 const mongoDbUrl = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}/?retryWrites=true&w=majority`;
